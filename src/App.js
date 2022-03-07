@@ -1,23 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./appcss.css"
+import { useState, useEffect } from "react"
+import Timer from "./Timer"
 
+import PaymentBtn from "./PaymentBtn"
 function App() {
+
+
+  const [flag, setflag] = useState(false)
+  const [money, setmoney] = useState(101)
+  const [arr, getarr] = useState("")
+  console.log(flag);
+  const [visible, setvisible] = useState("")
+
+
+  useEffect(() => {
+    setvisible(document.visibilityState)
+    getarr(arr + "  " + visible)
+
+  }, [visible])
+
+  console.log(visible, "useffecwt w")
+
+
+
+  useEffect(() => {
+    document.addEventListener("visibilityChange", () => {
+      setvisible(document.visibilityState)
+    })
+  }, [])
+  // var hidden, visibilityChange;
+  // if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
+  //   hidden = "hidden";
+  //   visibilityChange = "visibilitychange";
+  // } else if (typeof document.msHidden !== "undefined") {
+  //   hidden = "msHidden";
+  //   visibilityChange = "msvisibilitychange";
+  // } else if (typeof document.webkitHidden !== "undefined") {
+  //   hidden = "webkitHidden";
+  //   visibilityChange = "webkitvisibilitychange";
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"  >
+      {arr}
+      {flag ? <Timer flag={flag} setflag={setflag} initMinute={5} initSeconds={0} /> : <PaymentBtn flag={flag} setflag={setflag} />}
+
+
+
     </div>
   );
 }
