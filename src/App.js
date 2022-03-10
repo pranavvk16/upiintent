@@ -1,5 +1,4 @@
 import "./styles.css";
-import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import PaymentBtn from "./PaymentBtn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -19,7 +18,6 @@ function App() {
 
   return (
     <div className="App">
-      {arr}
       <BrowserRouter>
         <Routes>
           <Route
