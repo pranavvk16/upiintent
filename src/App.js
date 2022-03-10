@@ -35,8 +35,8 @@ function App() {
               <Timer
                 setFlag={setFlag}
                 flag={flag}
-                initMinute={0}
-                initSeconds={5}
+                initMinute={5}
+                initSeconds={0}
               />
             }
           />

@@ -11,6 +11,7 @@ export default function Timer(props) {
 
     if (minutes === 0 && seconds < 1) {
         navigate("/");
+        alert("Leaving the page ")
     }
     props.setFlag(true);
     useEffect(() => {
