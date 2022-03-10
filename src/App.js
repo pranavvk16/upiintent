@@ -2,18 +2,15 @@ import "./styles.css";
 import { useState, useEffect } from "react";
 import Timer from "./Timer";
 import PaymentBtn from "./PaymentBtn";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  const [flag, setflag] = useState(false);
-  const [money, setmoney] = useState(101);
   const [arr, getarr] = useState("");
-  console.log(flag);
   const [visible, setvisible] = useState("");
 
   useEffect(() => {
     setvisible(document.visibilityState);
     getarr(arr + "  " + visible);
-  }, [visible]);
+  }, [visible,arr]);
 
   console.log(visible, "useffecwt w");
 
@@ -37,19 +34,32 @@ function App() {
   return (
     <div className="App">
       {arr}
-      {/* <Switch>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<PaymentBtn />}
+          />
+          <Route
+            path="/timer"
+            element={
+              <Timer
+                initMinute={5}
+                initSeconds={0}
+              />
+            }
+          />
+        </Routes>
+        {/* <Switch>
         <Route path="/upi" component={PaymentBtn  } /> */}
-      {/* <Route path="/payment" component={<Timer initMinute={0} initSeconds={10} />} /> */}
-      {/* </Switch> */}
-      {flag ? (
-        <Timer flag={flag} setflag={setflag} initMinute={5} initSeconds={0} />
-      ) : (
-        <PaymentBtn flag={flag} setflag={setflag} />
-      )}
-
-
-
-      
+        {/* <Route path="/payment" component={<Timer initMinute={0} initSeconds={10} />} /> */}
+        {/* </Switch> */}
+        {/* {flag ? (
+          <Timer flag={flag} setflag={setflag} initMinute={5} initSeconds={0} />
+        ) : (
+          <PaymentBtn flag={flag} setflag={setflag} />
+        )} */}
+      </BrowserRouter>
     </div>
   );
 }
