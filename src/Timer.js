@@ -5,7 +5,14 @@ export default function Timer(props) {
     const { initMinute = 0, initSeconds = 10 } = props;
     const [minutes, setMinutes] = useState(initMinute);
     const [seconds, setSeconds] = useState(initSeconds);
+
     let navigate = useNavigate();
+
+
+    if (minutes === 0 && seconds < 1) {
+        navigate("/");
+    }
+    props.setFlag(true);
     useEffect(() => {
         let myInterval = setInterval(() => {
             if (seconds > 0) {
@@ -50,11 +57,22 @@ export default function Timer(props) {
                             <button
                                 onClick={() => {
                                   navigate("/");
+                                        props.setFlag(true);
                               }}
-                              style={{ marginTop: 20, paddingInline: 9, paddingBlock: 3 }}
+                                    style={{ marginTop: 20, paddingInline: 9, paddingBlock: 3, backgroundColor: "red", color: "white" }}
                           >
                               Cancel
                           </button>
+                                <button
+                                    onClick={() => {
+                                        alert("Successfull")
+                                        navigate("/");
+                                        props.setFlag(false);
+                                    }}
+                                    style={{ marginTop: 20, paddingInline: 9, paddingBlock: 3, marginInline: 9, backgroundColor: "green", color: "white" }}
+                                >
+                                    Verify Payment
+                                </button>
                       </center>
                   </>
               )}

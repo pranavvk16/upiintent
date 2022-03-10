@@ -1,9 +1,10 @@
 import "./styles.css";
 import Timer from "./Timer";
 import PaymentBtn from "./PaymentBtn";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-
+  const [flag, setFlag] = useState(false);
   // var hidden, visibilityChange;
   // if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
   //   hidden = "hidden";
@@ -22,14 +23,20 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<PaymentBtn />}
+            element={
+              <PaymentBtn
+                setFlag={setFlag}
+                flag={flag}
+              />}
           />
           <Route
             path="/timer"
             element={
               <Timer
-                initMinute={5}
-                initSeconds={0}
+                setFlag={setFlag}
+                flag={flag}
+                initMinute={0}
+                initSeconds={5}
               />
             }
           />

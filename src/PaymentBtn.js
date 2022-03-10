@@ -40,7 +40,7 @@ export default function PaymentBtn(props) {
                     />
                 </a>
             </div>
-            {true && (
+            {props.flag && (
                 <div style={{ padding: "20px", backgroundColor: "red" }}>
                     <a href="/">verify payment</a>
                 </div>
