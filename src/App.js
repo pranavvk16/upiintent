@@ -4,21 +4,7 @@ import Timer from "./Timer";
 import PaymentBtn from "./PaymentBtn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  const [arr, getarr] = useState("");
-  const [visible, setvisible] = useState("");
 
-  useEffect(() => {
-    setvisible(document.visibilityState);
-    getarr(arr + "  " + visible);
-  }, [visible,arr]);
-
-  console.log(visible, "useffecwt w");
-
-  useEffect(() => {
-    document.addEventListener("visibilityChange", () => {
-      setvisible(document.visibilityState);
-    });
-  }, []);
   // var hidden, visibilityChange;
   // if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
   //   hidden = "hidden";
